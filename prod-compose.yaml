@@ -9,15 +9,11 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
       POSTGRES_DB: ${POSTGRES_DB}
-    # ports:
-    #   - 5432:5432
     volumes:
       - ./volume/db:/var/lib/postgresql/data
 
   account:
-    build:
-      context: account-service
-      dockerfile: Dockerfile
+    image: henriquebrnetto/account
     hostname: account
     environment:
       DATABASE_URL: jdbc:postgresql://db:5432/${POSTGRES_DB}
@@ -30,9 +26,7 @@ services:
       - db
 
   auth:
-    build:
-      context: auth-service
-      dockerfile: Dockerfile
+    image: henriquebrnetto/auth
     hostname: auth
     environment:
       JWT_SECRET_KEY: ${JWT_SECRET_KEY}
@@ -40,8 +34,6 @@ services:
       - db
 
   gateway:
-    build:
-      context: gateway
-      dockerfile: Dockerfile
+    image: henriquebrnetto/gateway
     ports:
       - 8080:8080
