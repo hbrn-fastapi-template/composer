@@ -83,3 +83,22 @@ Global CORS configuration allows all origins (`*`), headers, and methods.
     - Connects to AWS EKS.
     - Updates the deployment image to the new build ID.
     - Rolls out the update.
+
+## Folder Structure
+
+```
+fastapi/
+├── composer/               # Microservices architecture
+│   ├── api/
+│   ├── auth/
+|   ├── auth-service/
+│   ├── account/
+|   ├── account-service/
+│   ├── gateway/
+│   ├── jenkins/
+│   ├── k8s/
+│   └── utils/              # (Optional)
+├── database/               # Database repository
+├── docs/                   # Documentation
+└── prompts/                # AI prompts
+```
